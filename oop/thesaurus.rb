@@ -12,3 +12,37 @@
 # and which belongs in the Entry class.
 #
 # And... test your functionality using RSpec!
+class Thesaurus
+  def initialize(input_hash)
+    super(input_hash)
+    @thesaurus = input_hash[:thesaurus]
+  end
+
+  def add_synonym(input)
+    @synonym << input
+  end
+
+  def add_antonym(input)
+    @antonym << input
+  end
+
+  def delete_word
+  end
+end
+
+class Entry < Thesaurus
+  attr_reader :synonym, :antonym
+  attr_accessor :word
+
+  def initialize(input_hash)
+    @word = input_hash[:word]
+    @synonym = input_hash[:synonym]
+    @antonym = input_hash[:antonym]
+  end
+end
+
+dog = Entry.new(word: "dog", synonym: "mutt", antonym: "cat")
+p dog.add_synonym("perro")
+
+
+
